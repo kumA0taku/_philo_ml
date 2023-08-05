@@ -1,0 +1,56 @@
+{% extends 'iris/main.html' %}
+
+<title>{% block title %}Home{% endblock title %}</title>
+
+{% block content %} 
+
+{% comment %} {% include 'iris/slider.html' %} {% endcomment %}
+
+<br />
+
+<div class="container-sm">
+  <h1>การพยากรณ์ดอกไอริส</h1>
+  <br />
+  <form action="" method="POST">
+    {% csrf_token %}
+    <h4>
+      <div class="text-center"><label for="fname">Sepal Length</label></div>
+      <br />
+      <input
+        type="float"
+        name="sepal_length"
+        required
+        placeholder="sepal_length"
+      /><br /><br />
+      <div class="text-center"><label for="fname">Sepal width</label></div>
+      <br />
+      <input
+        type="float"
+        name="sepal_width"
+        required
+        placeholder="sepal_width"
+      /><br /><br />
+      <div class="text-center"><label for="fname">Petal Length</label></div>
+      <br />
+      <input
+        type="float"
+        name="petal_length"
+        required
+        placeholder="petal_length"
+      /><br /><br />
+      <div class="text-center"><label for="fname">Petal width</label></div>
+      <br />
+      <input
+        type="float"
+        name="petal_width"
+        required
+        placeholder="petal_width"
+      /><br /><br />
+      <input type="submit" /><br />
+    </h4>
+  </form>
+  {% comment %} {% include 'result.html' %} {% endcomment %}
+  <br /><br />
+</div>
+
+{% endblock %}
