@@ -30,17 +30,26 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+#pip install django-crispy-forms
+#pip install crispy-bootstrap5
 
 INSTALLED_APPS = [
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "app_project",
+    "myapp",
+    "crispy_forms",
+    "crispy_bootstrap5",
     
 ]
+
+#CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+# CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -76,23 +85,28 @@ WSGI_APPLICATION = "project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
+
 # DATABASES = {
 #     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "myapp",
+#         "HOST":"localhost",
+#         "USER":"root",
+#         "PASSWORD":"",
+#         "PORT":"3306",
 #     }
 # }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "app_project",
-        "HOST":"localhost",
-        "USER":"root",
-        "PASSWORD":"",
-        "PORT":"3306",
-    }
-}
+
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -122,20 +136,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-MEDIA_URL = ‘/images/’
-MEDIA_ROOT = BASE_DIR / ‘static’
+
+MEDIA_URL = '/images/'
+
+MEDIA_ROOT = BASE_DIR / 'static'
 
 STATICFILES_DIRS = [
-	BASE_DIR / ‘static’
-]
+    BASE_DIR / 'static'
+    ]
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, ‘static’)]
-STATIC_ROOT = os.path.join(BASE_DIR, ‘staticfiles’)
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+#DataFlair #User_Uploaded_Files
+#pip install pillow
+#python -m pip install Pillow
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+

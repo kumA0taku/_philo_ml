@@ -1,17 +1,21 @@
 from django.shortcuts import render, HttpResponseRedirect
 from joblib import load
 
-model = load('./modelai/model.joblib')
+model = load(r'C:\_philo_ml\mydata\diabetes_model.pkl')
 
 def predictor(request):
     if request.method == 'POST':
-        sepal_length = request.POST['sepal_length']
-        sepal_width = request.POST['sepal_width']
-        petal_length = request.POST['petal_length']
-        petal_width = request.POST['petal_width']
-        y_pred = model.predict([[sepal_length, sepal_width, petal_length, petal_width]]) 
-        return render(request, 'iris/result.html', {'result':y_pred})
-    return render(request, 'iris/forms.html')
+        Pregnancies = request.POST['Pregnancies']
+        Glucose = request.POST['Glucose']
+        BloodPressure = request.POST['BloodPressure']
+        SkinThickness = request.POST['SkinThickness']
+        Insulin = request.POST['Insulin']
+        BMI = request.POST['BMI']
+        DBPFunction = request.POST['DBPFunction']
+        Age = request.POST['Age']
+        y_pred = model.predict([[Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DBPFunction, Age]]) 
+        return render(request, 'diabetes/result.html', {'result':y_pred})
+    return render(request, 'diabetes/forms.html')
 
 #การสร้างฟอร์ม
 from myapp.models import EmployeeForm
